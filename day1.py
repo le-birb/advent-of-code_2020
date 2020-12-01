@@ -27,3 +27,15 @@ for trio in product(report, repeat = 3):
     if sum(trio) == 2020:
         print(multiply(trio))
         break
+
+
+# for fun, here's a function that'll do the above for any number of elements n
+def tuple_sum_to(l: Iterable, n: int, target) -> Union[tuple, None]:
+    for t in product(l, repeat = n):
+        if sum(t) == target:
+            return t
+
+# the solutions using this function would look like:
+
+multiply(tuple_sum_to(report, n = 2, target = 2020))
+multiply(tuple_sum_to(report, n = 3, target = 2020))
