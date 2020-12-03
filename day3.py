@@ -1,7 +1,6 @@
 
 from math import prod as mult
-
-from itertools import zip_longest
+from itertools import zip_longest, product
 
 infile = open('day3-input', 'r')
 
@@ -35,3 +34,17 @@ downs  = [1, 1, 1, 1, 2]
 slopes = zip_longest(rights, downs)
 
 print(mult(count_trees(*slope) for slope in slopes))
+
+
+# for fun, determine a slope with minimum tree collisions
+rights = range(width*height//2)
+downs = range(1, height//2)
+
+curr_min = (height, ())
+
+for slope in product(rights, downs):
+    count = count_trees(*slope)
+    if count < curr_min[0]:
+        curr_min = (count, slope)
+
+print(curr_min)
