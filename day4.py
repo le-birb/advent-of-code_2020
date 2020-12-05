@@ -20,9 +20,6 @@ with open('day4-input', 'r') as f:
 if curr_passport:
     passports.append(curr_passport)
 
-# clean up some variables
-del curr_passport
-
 
 # part 1
 required_fields = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid']
